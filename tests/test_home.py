@@ -1,11 +1,10 @@
 import pytest
-
 from pages.homepage import HomePage
+from tests.base_test import BaseTest
 
 
-class HomePageTest(HomePage):
+class HomePageTest(HomePage, BaseTest):
 
     @pytest.mark.mm
     def test_homepage_load(self):
-        self.open("https://www.demoblaze.com/index.html")
         self.verify_home_loads()
