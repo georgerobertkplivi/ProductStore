@@ -32,6 +32,10 @@ class HomePage(BaseCase):
         self.click(self.home)
         self.verify_home_loads()
 
+    def goto_contact(self):
+        self.click(self.contact_us)
+        self.verify_home_loads()
+
     def goto_about(self):
         self.click(self.about_us)
 
