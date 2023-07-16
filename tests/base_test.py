@@ -8,6 +8,7 @@ class BaseTest(BaseCase):
         super().setUp()
         # <<< Run custom setUp() code for tests AFTER the super().setUp() >>>
         self.open(self.base_url)
+        self.maximize_window()
 
     def tearDown(self):
         self.save_teardown_screenshot()  # If test fails, or if "--screenshot"
