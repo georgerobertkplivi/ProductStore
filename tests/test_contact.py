@@ -1,10 +1,7 @@
-import time
-
 import pytest
 from assertpy import assert_that
 
 from pages.contact_page import ContactPage
-from pages.homepage import HomePage
 from tests.base_test import BaseTest
 
 
