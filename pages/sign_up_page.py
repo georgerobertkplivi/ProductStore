@@ -30,3 +30,8 @@ class SignUpPage(HomePage):
     def fill_sign_up_form(self, username, password):
         self.enter_sign_up_username(username)
         self.enter_sign_up_password(password)
+
+    def sign_up_user(self, valid_username, valid_password):
+        # Fill in the sign-up form with valid credentials
+        self.fill_sign_up_form(valid_username, valid_password)
+        self.click_sign_up_button()

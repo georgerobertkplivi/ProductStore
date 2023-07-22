@@ -1,12 +1,13 @@
 import pytest
 
 from pages.login_page import LoginPage
+from pages.sign_up_page import SignUpPage
 from tests.base_test import BaseTest
 from faker import Faker
 from assertpy import assert_that
 
 
-class LoginPageTest(BaseTest, LoginPage):
+class LoginPageTest(BaseTest, LoginPage, SignUpPage):
     """
 
 Login Page:
@@ -45,24 +46,26 @@ Login Page:
     """
 
     @pytest.mark.login
-    def test_successful_login(self):
-        self.goto_login()
+    def test_successful_login_with_new_user(self):
+        self.goto_sign_up()
 
-        # Replace 'valid_username' and 'valid_password' with actual valid credentials
         faker = Faker()
         valid_username = faker.user_name()  # Generate a random username
         valid_password = faker.password()  # Generate a random password
+
+        self.sign_up_user(valid_username, valid_password)
+        self.refresh()
+
+        self.goto_login()
 
         # Fill in the login form with valid credentials
         self.fill_login_form(valid_username, valid_password)
 
         # Click the login button
         self.click_login_button()
-        self.accept_alert()
+        self.scroll_to_top()
 
         # Assert that the user is redirected to the correct dashboard or home page
-        # Add your assertions here based on the behavior of your application after successful login
         assert_that(self.get_username()).contains(valid_username)
         assert_that(self.is_element_present(self.logout_button_locator)).is_true()
         self.assert_logout_button_present()
-        # For example, you can assert the URL or the presence of certain elements on the dashboard page
