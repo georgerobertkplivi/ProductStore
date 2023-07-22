@@ -85,5 +85,9 @@ class HomePage(BaseCase):
         assert_that(self.is_element_visible(self.PREV_BUTTON)).is_true()
         # assert_that(self.get_macbook()).contains("MacBook Pro")
 
+    def get_alert_text(self):
+        alert = self.switch_to_alert()
+        return alert.text
+
 
 
