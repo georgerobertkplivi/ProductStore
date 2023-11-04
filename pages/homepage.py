@@ -1,5 +1,10 @@
+import random
+
 from seleniumbase import BaseCase
 from assertpy import assert_that
+
+from pages.item_details_page import ItemDetailsPage
+from tests.enum.smart_phones import SmartphoneModel
 
 
 class HomePage(BaseCase):
@@ -88,6 +93,15 @@ class HomePage(BaseCase):
     def get_alert_text(self):
         alert = self.switch_to_alert()
         return alert.text
+
+    def open_item(self, item_name):
+        item = "//a[normalize-space()='" + item_name + "']"
+        self.click(item)
+
+
+
+
+
 
 
 
